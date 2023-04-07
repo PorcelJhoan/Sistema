@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+<div class="container">
+    
+       
+            <form (ngSubmit)="upload()" novalidate #f="ngForm">
+                <div class="row mt-5">
+                <div class="col-md-6 ">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre"
+                    [(ngModel)]="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" class="form-control" id="precio" name="precio"
+                    [(ngModel)]="precio" required>
+                </div>
+                <div class="form-group">
+                    <label for="medida">Medida</label>
+                    <input type="text" class="form-control" id="medida" name="medida"
+                    [(ngModel)]="medida" required>
+                </div>
+                <div class="form-group">
+                    <label for="caracteristica">Caracteristica</label>
+                    <input type="text" class="form-control" id="caracteristica" name="caracteristica"
+                    [(ngModel)]="caracteristica" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad"
+                    [(ngModel)]="cantidad" required>
+                </div>
+                <div class="form-group">
+                    <label for="cantidad">Area </label>
+                    <select class="browser-default custom-select" [(ngModel)]="areaid" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let a of area"  value="{{a.id}}">{{a.nombre}}</option>
+                      </select>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                
+                
+                <div class="form-group">
+                    <label for="cantidad">Tipo Producto </label>
+                    <select class="browser-default custom-select"  [(ngModel)]="tipoproductoid" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let tp of tipoproducto"  value="{{tp.id}}">{{tp.nombre}}</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Seleccione una imagen </label>
+                    <div class="custom-file">
+                    
+                        <label class="custom-file-label" for="customFileLangHTML" data-browse="Bestand kiezen"> {{filename}}</label>
+                          <input type="file" class="custom-file-input" id="customFileLangHTML" (change)="selectFiles($event)" accept="image/png,image/jpg">
+                      </div>
+                </div>
+                <div class="form-group" *ngIf="prev">
+                    <img [src]="prev" class="col-auto mx-auto" alt="" >
+                </div>
+
+              
+                    
+               
+                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                    <i class="fas fa-plus-circle"></i> Crear</button>
+                <button class="btn btn-outline-primary btn-block" routerLink="/lista">
+                    <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                </div>
+            </div>
+            </form>
+        
+    
+</div>

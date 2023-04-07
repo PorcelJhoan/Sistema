@@ -1,0 +1,77 @@
+<app-menu></app-menu>
+<ng-container *ngIf="true">
+<div class=" row">
+     
+     <div class="card-table col-12 dark">
+          
+          <div class="card-header text-center text-white bg-dark">
+               Detalle
+             </div>
+             <div class="input-group mb-3 ">
+               <div class="input-group-prepend ">
+                 <span class="input-group-text text-white bg-dark" id="basic-addon1">Nombre cliente : </span>
+               </div>
+               <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+             </div>
+          <div class="cart-product col-12">
+               
+                <table class="table col-12 table-responsive">
+                     <thead class="col-12">
+                           <tr class="text-white bg-dark">
+                         
+                              <th scope="col" class="col-1">Nro</th>
+                              <th scope="col" class="col-3">imagen</th>
+                              <th scope="col" class="col-3">Nombre</th>
+                              <th scope="col" class="col-1">Precio</th>
+                              <th scope="col" class="col-3">Medida</th>
+                              
+                              <th scope="col" class="col-1">Cantidad</th>
+                              <th scope="col">Total</th>
+                              <th scope="col" class="col-2">Accion</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let i of items">
+                                 <td>{{i.id}}</td>
+                                 <td><img src="assets/img{{i.imagen}}" width="35%" height="35%" alt="image" class="col-auto"></td>
+                                 <td>{{i.nombre}}</td>
+                                 <td>{{i.precio}}</td>
+                                 <td  class="col-3">{{i.medida}}</td>
+                                
+                                 <td ><input type="number" name="" id=""  min="1" [ngModel]="i.areaid" (ngModelChange)="valuechange($event,i)"></td>
+                                 <td>{{i.tipoproductoid}}</td>
+                                 <td> <button class="btn btn-danger" (click)="eliminar(i)"><i class="fas fa-trash-alt"></i></button>
+                                      
+                                    </td>
+                                    
+                                 
+                            </tr>
+                            <tr  class="text-white bg-dark">
+                     
+                              <td scope="col"><b>total</b></td>
+                              <td> </td>
+                              <td> </td>
+                              <td> </td>
+                              <td> </td>
+                              <td> </td>
+                              <td><b>{{total}}</b></td>
+                              <td> </td>
+                              
+                         </tr>
+                        </tbody>
+                        </table>
+</div>
+</div>
+
+
+
+<div class="card col-12" id="test" >
+
+    
+          <div class="card-footer">
+          <button *ngIf="items.length!=0" class="btn btn-outline-primary btn-block" (click)="createPdf()"><i class="bi bi-receipt-cutoff"></i> Generar venta</button>
+          </div>
+   </div>
+
+     </div>
+</ng-container>
